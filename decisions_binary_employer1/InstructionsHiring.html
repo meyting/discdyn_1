@@ -1,0 +1,97 @@
+{{ block title }}
+    Part I - Task Explanation
+{{ endblock }}
+
+{{ block content }}
+<h5> Your Task: </h5>
+<p>
+    <b>On the following pages, you will be asked to make a series of {{C.number_of_pairs}} selection decisions. In each decision you
+        will be presented with two `workers' and asked to select one of them.</b>
+</p>
+<p>
+    The workers are participants of another study in which they will subsequently perform a task for you, that determines your bonus payment.
+    However, they will perform this task without knowing whether or not they have been selected by you.
+</p>
+<p>
+    The task that the workers perform measures their logical reasoning ability.
+    In particular, they will have {{C.time_limit_sequences}} minutes to solve as many number sequences as possible.
+    In order to solve a sequence, they need to find the missing number of the respective sequence, by detecting the pattern according to which the sequence is constructed (see example below).
+</p>
+<p style="background-color:#edeef0; padding:10px;  border-radius: 15px;">
+<u> Example of the Worker's Task: </u> <br><br>
+<img style="margin-left:5%", class="logo" src="{% static 'example_sequences.png' %}" alt="Example Task Workers">
+<br><br>
+
+        In this example, the rule according to which the sequence of numbers is constructed is to subtract 1 from the previous number in the sequence.
+        Therefore, the correct answer would be "5". The workers can always skip a sequence by clicking on "Next".
+
+</p>
+<p>
+    The total number of solved sequences determines a workers 'score'.
+    The workers are incentivized by being paid according to their score, i.e. the higher a worker's score, the higher the worker's payment.
+</p>
+
+
+    <!--  // <p style="font-size:18px;"> <u> Example: </u>  </p>
+
+<table class="center">
+    <tr>
+        <td style="font-size:30px; width:70"> 9 , 8 , 7 , 6 ,  </td>
+        <td>&nbsp;</td>
+        <td style="width:50px">
+            <input type="number" min="0" name="input_sequence" id="input_sequence" class="form-control" readonly>
+        </td>
+    </tr>
+</table>
+-->
+
+
+<h5> Your Bonus Payment: </h5>
+<p>
+    One of the {{C.NUM_ROUNDS}} selection decisions will be randomly drawn as the decision-that-counts. If you have chosen the worker
+    with the higher score in that decision, you get {{C.bonushiring}}, otherwise you get no bonus payment. <br>
+</p>
+<p>
+    For each selection decision, we provide you with information about the workers' gender, age, and race.
+</p>
+<p>
+    Please click on 'Next' if you have read and understood the explanations. On the next page, you will be presented with the first pair of workers.
+</p>
+
+
+
+    {{ next_button }}
+{{ endblock }}
+
+{{ block styles }}
+<style type="text/css">
+.hidden {
+	display:none;
+}
+
+.infobox {
+    background-color:#f0f0f5
+    }
+
+.openbox {
+        cursor: pointer;
+		margin: 15px 0;
+		  }
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+{{ endblock }}
+
+{{ block app_scripts }}
+<script>
+document.getElementById("openbox").addEventListener("click", function(){
+document.getElementById("infobox").classList.remove("hidden");
+document.getElementById("container").classList.add("hidden");
+        });
+
+</script>
+{{ endblock }}
+
